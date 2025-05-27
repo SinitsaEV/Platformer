@@ -9,11 +9,9 @@ public class Enemy : MonoBehaviour
     private Vector2 _endPosition;
     private Vector2 _direction;
 
-    private float _flipThreshold = 0.1f;
-    private bool _isFacingRight = false;
-
     private Transform _transform;
     private Rigidbody2D _rigidbody;
+    private Rotator _rotator;
 
     private void Awake()
     {
@@ -21,13 +19,14 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _endPosition = new Vector2(_transform.position.x + _distanse, _transform.position.y);
         _startPosition = _transform.position;
+        _rotator = GetComponent<Rotator>();
         ChangeDirection();
     }
 
     private void Update()
     {
         Patrol();
-        Rotate();
+        _rotator.Rotate(_direction);
     }
 
     private void Patrol()
@@ -44,21 +43,5 @@ public class Enemy : MonoBehaviour
     private void ChangeDirection()
     {
         _direction = (_endPosition - (Vector2)_transform.position).normalized;
-    }
-
-    private void Rotate()
-    {
-        if (Mathf.Abs(_direction.x) > _flipThreshold)
-        {
-            bool isMoveRight = _direction.x > 0;
-
-            if (isMoveRight != _isFacingRight)
-            {
-                _isFacingRight = !_isFacingRight;
-                Vector3 newScale = _transform.localScale;
-                newScale.x = -newScale.x;
-                _transform.localScale = newScale;
-            }
-        }
     }
 }

@@ -26,7 +26,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_rigidbody.velocity.y > 0.1f && !_movement.IsGrounded)
+        if (_rigidbody.velocity.y > 0.1f && _movement.IsGrounded() == false)
         {
             _animator.SetTrigger(_jumpParam);
         }

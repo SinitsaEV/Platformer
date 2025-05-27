@@ -11,13 +11,13 @@ public class CoinSpawner : BaseSpawner
     private Transform _transform;
     private Queue<Coin> _coinPool = new Queue<Coin>();
 
-    private WaitForSecondsRealtime _secondsRealtime;
+    private WaitForSeconds _seconds;
     private Coroutine _spawningCoroutine;
 
     private void Awake()
     {
         _transform = transform;
-        _secondsRealtime = new WaitForSecondsRealtime(_delay);
+        _seconds = new WaitForSeconds(_delay);
     }
 
     private void Update()
@@ -26,11 +26,6 @@ public class CoinSpawner : BaseSpawner
         {
             _spawningCoroutine = StartCoroutine(SpawningCoroutine());
         }
-    }
-
-    private void OnDestroy()
-    {
-        StopCoroutine(SpawningCoroutine());
     }
 
     private void ReturnCoin(Coin coin)
@@ -72,7 +67,7 @@ public class CoinSpawner : BaseSpawner
         while (_isWork)
         {
             Spawn();
-            yield return _secondsRealtime;
+            yield return _seconds;
         }
 
         _spawningCoroutine = null;
