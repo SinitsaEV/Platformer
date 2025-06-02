@@ -5,14 +5,12 @@ using UnityEngine;
 public class CoinSpawner : BaseSpawner
 {
     [SerializeField] private Coin _prefab;
-    [SerializeField] private bool _isWork = true;
     [SerializeField] private float _delay = 2f;
+    [SerializeField] private int _spawnAmount = 100;
+    private WaitForSeconds _seconds;
 
     private Transform _transform;
     private Queue<Coin> _coinPool = new Queue<Coin>();
-
-    private WaitForSeconds _seconds;
-    private Coroutine _spawningCoroutine;
 
     private void Awake()
     {
@@ -20,12 +18,15 @@ public class CoinSpawner : BaseSpawner
         _seconds = new WaitForSeconds(_delay);
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_isWork && _spawningCoroutine == null)
-        {
-            _spawningCoroutine = StartCoroutine(SpawningCoroutine());
-        }
+        StartCoroutine(SpawningCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        foreach (Coin coin in _coinPool)
+            coin.Collected -= ReturnCoin;
     }
 
     private void ReturnCoin(Coin coin)
@@ -64,12 +65,10 @@ public class CoinSpawner : BaseSpawner
 
     private IEnumerator SpawningCoroutine()
     {
-        while (_isWork)
+        for (int i = 0; i < _spawnAmount; i++)
         {
             Spawn();
             yield return _seconds;
         }
-
-        _spawningCoroutine = null;
     }
 }

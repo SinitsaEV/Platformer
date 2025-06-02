@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyAnimationController : MonoBehaviour
+public class PlayerAnimator2 : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
 

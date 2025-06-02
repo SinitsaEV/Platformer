@@ -1,24 +1,23 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Collector : MonoBehaviour
 {
-    public Action<int> CoinCollected;
+    private Player _player;
+
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == null)
             return;
 
-        if(collision.TryGetComponent<ICollectible>(out ICollectible collectible))
+        if(collision.TryGetComponent<Item>(out Item item))
         {
-            collectible.Collect(this);
+            item.Accept(new PickupVisitor(_player));
         }
-    }
-
-    public void AddCoin(int points)
-    {
-        CoinCollected?.Invoke(points);
     }
 }
