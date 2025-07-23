@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9151663721646377816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2605893680848953459}
   - component: {fileID: 802477962528214320}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,12 @@ GameObject:
   - component: {fileID: 651343398155299584}
   - component: {fileID: 2799832124372287967}
   - component: {fileID: 8820770488679303136}
-  m_Layer: 0
+  - component: {fileID: 4415680225813317599}
+  - component: {fileID: 8190676056364744825}
+  - component: {fileID: 3268610588639310513}
+  - component: {fileID: 2048412867588542362}
+  - component: {fileID: 6916115051127739501}
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ec3abb6f8939e4d9964f8f7c43efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flipThreshold: 0.1
 --- !u!114 &651343398155299584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fffe9ac877e714593487369bb3426a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanse: 5
+  "_distan\u0441e": 5
 --- !u!114 &8820770488679303136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +310,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 2
   _jumpForse: 10
+--- !u!114 &4415680225813317599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842371521046358068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9664865345f64a48b6ce1e3543b268d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8190676056364744825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842371521046358068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d2f05e7a0848240af1c4f9c4c0ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 5
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &3268610588639310513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842371521046358068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaeae64586a9804690fbd312b9217cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 1
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &2048412867588542362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842371521046358068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba27c69ca54ff2f48b6c856572b03392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _delay: 2
+--- !u!114 &6916115051127739501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842371521046358068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d30270d7b89d842929ecef960a0c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
 --- !u!1 &5257742947554231671
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6040329964390732848}
   - component: {fileID: 1091902246610332000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon-Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2306580519962047112}
   - component: {fileID: 158890827234904266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -482,7 +559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 91386729812008426}
   - component: {fileID: 7240494753989403406}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3331730622518532902}
   - component: {fileID: 1118796619617489959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

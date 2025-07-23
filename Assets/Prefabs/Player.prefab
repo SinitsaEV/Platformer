@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954922805321641839}
   - component: {fileID: 2992548821886964444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7556866717712515091}
   - component: {fileID: 791033730741542601}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon-Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5856270501989760969}
   - component: {fileID: 2948220618049586321}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6604814721030093477}
   - component: {fileID: 3719260926723378761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hat-Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875927568451472081}
   - component: {fileID: 6669643521011990210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3523887800237017198}
   - component: {fileID: 4081649451960143546}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,10 @@ GameObject:
   - component: {fileID: 1150807750219936757}
   - component: {fileID: 3537586411738324728}
   - component: {fileID: 565867389261839027}
-  m_Layer: 0
+  - component: {fileID: 4607160099500439820}
+  - component: {fileID: 6217127445158363009}
+  - component: {fileID: 8866507112720118922}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ec3abb6f8939e4d9964f8f7c43efcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _flipThreshold: 0.1
 --- !u!70 &8459520519784532174
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -750,6 +754,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 4.5
   _jumpForse: 450
+--- !u!114 &4607160099500439820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286621618836983633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d30270d7b89d842929ecef960a0c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+--- !u!114 &6217127445158363009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286621618836983633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba27c69ca54ff2f48b6c856572b03392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _delay: 2
+--- !u!114 &8866507112720118922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7286621618836983633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d2f05e7a0848240af1c4f9c4c0ff02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 1
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &8066796644637821511
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,7 +806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2771587488578047651}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

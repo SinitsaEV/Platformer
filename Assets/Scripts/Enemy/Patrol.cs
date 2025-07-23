@@ -2,7 +2,7 @@
 
 public class Patrol : MonoBehaviour
 {
-    [SerializeField] private float _distanсe = 5f;
+    [SerializeField] private float _distanсe = 2f;
     private Transform _transform;
 
     private Vector2 _startPosition;
