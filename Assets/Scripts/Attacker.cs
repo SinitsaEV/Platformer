@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Attacker :MonoBehaviour, IAttacker
 {
-    [SerializeField] private int _damage = 10;
     [SerializeField] private float _delay = 2f;
     private WaitForSeconds _attackDelay;
 
@@ -14,12 +13,12 @@ public class Attacker :MonoBehaviour, IAttacker
         _attackDelay = new WaitForSeconds(_delay);
     }
 
-    public void Attack(IDamageable damageable)
+    public void Attack(IDamageable damageable, int damage)
     {
         if (CanAttack)
         {
             StartCoroutine(WaitBeforeNextAttack());
-            damageable.TakeDamage(_damage);
+            damageable.TakeDamage(damage);
         }
     }
 

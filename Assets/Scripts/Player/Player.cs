@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     private InputReader _inputReader;
     private Attacker _attacker;
     private TargetDetector _targetDetector;
+    private Vampirism _vampirism;
+    private int _damage = 10;
 
     private void Awake()
     {
@@ -17,6 +19,7 @@ public class Player : MonoBehaviour
         _rotator = GetComponent<Rotator>();
         _attacker = GetComponent<Attacker>();
         _targetDetector = GetComponent<TargetDetector>();
+        _vampirism = GetComponentInChildren<Vampirism>();
     }
 
     private void FixedUpdate()
@@ -25,9 +28,12 @@ public class Player : MonoBehaviour
         _rotator.Rotate(_inputReader.Direction);
 
         if (_targetDetector.IsTargetDetected && _attacker.CanAttack)
-            _attacker.Attack(_targetDetector.Damageable);
+            _attacker.Attack(_targetDetector.Damageable, _damage);
 
         if (_inputReader.IsJump && _groundDetector.IsGrounded())
             _playerMover.Jump();
+
+        if (_inputReader.IsVampire)
+            _vampirism.Active();
     }
 }

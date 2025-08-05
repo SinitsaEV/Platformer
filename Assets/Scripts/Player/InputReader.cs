@@ -5,6 +5,7 @@ public class InputReader : MonoBehaviour
     private PlayerInput _playerInput;
 
     public bool IsJump { get; private set; }
+    public bool IsVampire { get; private set; }
     public Vector2 Direction { get; private set; }
 
     private void Awake()
@@ -17,6 +18,8 @@ public class InputReader : MonoBehaviour
         _playerInput.Enable();
         _playerInput.Player.Jump.performed += ctx => IsJump = true;
         _playerInput.Player.Jump.canceled += ctx => IsJump = false;
+        _playerInput.Player.Vampire.performed += ctx => IsVampire = true;
+        _playerInput.Player.Vampire.canceled += ctx => IsVampire = false;
     }
 
     private void Update()
@@ -28,6 +31,8 @@ public class InputReader : MonoBehaviour
     {
         _playerInput.Player.Jump.performed -= ctx => IsJump = true;
         _playerInput.Player.Jump.canceled -= ctx => IsJump = false;
+        _playerInput.Player.Vampire.performed -= ctx => IsVampire = true;
+        _playerInput.Player.Vampire.canceled -= ctx => IsVampire = false;
         _playerInput.Disable();
     }
 }

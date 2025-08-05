@@ -1,4 +1,4 @@
 public interface IAttacker
-{    
-    public void Attack(IDamageable damageable);
+{
+    public void Attack(IDamageable damageable, int damage);
 }

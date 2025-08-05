@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     private IStateMachine _machine;
     private Rigidbody2D _rigidbody;
     private EnemyDependencies _dependencies;
+    private int _damage;
 
     private void Awake()
     {
@@ -18,7 +19,8 @@ public class Enemy : MonoBehaviour
             GetComponent<ITargetDetector>(),
             GetComponent<Patrol>(),
             GetComponent<Chase>(),
-            GetComponent<IMovable>());
+            GetComponent<IMovable>(),
+            _damage);
 
         EnemyStateMachineFactory stateMachineFactory = new EnemyStateMachineFactory();
         _machine = stateMachineFactory.CreateEnemyStateMachine(_dependencies);
