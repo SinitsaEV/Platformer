@@ -48,11 +48,11 @@ public class Vampirism : BaseAbility
 
     private IEnumerator VampirismRoutine()
     {               
-        while (_currentEnergy != _minEnergy)
+        while (CurrentEnergy != MinEnergy)
         {
-            yield return _tickTime;
+            yield return TickTime;
 
-            ChangeEnergy(-_tick / _duration);
+            ChangeEnergy(-Tick / _duration);
 
             List<IDamageable> targets = GetTargets();
 

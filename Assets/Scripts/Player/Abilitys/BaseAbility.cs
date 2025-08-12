@@ -9,11 +9,11 @@ public abstract class BaseAbility : MonoBehaviour
     protected bool IsActive = false;
     protected Transform Transform;
 
-    protected float _tick = 0.5f;
-    protected float _maxEnergy = 1;
-    protected float _minEnergy = 0;
-    protected float _currentEnergy;
-    protected WaitForSeconds _tickTime;
+    protected float Tick = 0.5f;
+    protected float MaxEnergy = 1;
+    protected float MinEnergy = 0;
+    protected float CurrentEnergy;
+    protected WaitForSeconds TickTime;
 
     public Action OnStarted; 
     public Action OnEnded;
@@ -21,19 +21,19 @@ public abstract class BaseAbility : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _tickTime = new WaitForSeconds(_tick);
+        TickTime = new WaitForSeconds(Tick);
         Transform = transform;
-        _currentEnergy = _maxEnergy;
-        EnergyUpdated?.Invoke(_currentEnergy);
+        CurrentEnergy = MaxEnergy;
+        EnergyUpdated?.Invoke(CurrentEnergy);
     }
 
     private IEnumerator Cooldown()
     {
-        while (_currentEnergy != _maxEnergy)
+        while (CurrentEnergy != MaxEnergy)
         {
-            yield return _tickTime;
+            yield return TickTime;
 
-            ChangeEnergy(_tick / Delay);
+            ChangeEnergy(Tick / Delay);
         }
 
         IsRecharging = false;
@@ -50,9 +50,9 @@ public abstract class BaseAbility : MonoBehaviour
 
     protected void ChangeEnergy(float value)
     {
-        _currentEnergy += value;
-        _currentEnergy = Mathf.Clamp(_currentEnergy, _minEnergy, _maxEnergy);
-        EnergyUpdated?.Invoke(_currentEnergy);
+        CurrentEnergy += value;
+        CurrentEnergy = Mathf.Clamp(CurrentEnergy, MinEnergy, MaxEnergy);
+        EnergyUpdated?.Invoke(CurrentEnergy);
     }
 
     public abstract void Active();
