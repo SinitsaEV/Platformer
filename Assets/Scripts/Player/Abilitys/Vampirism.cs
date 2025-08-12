@@ -1,7 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(NearestEnemyDetector))]
 public class Vampirism : BaseAbility
 {
     [SerializeField] private LayerMask _enemyLayerMask;
@@ -10,6 +10,7 @@ public class Vampirism : BaseAbility
     [SerializeField] private float _range = 3f;
 
     private IAttacker _attacker;
+    private NearestEnemyDetector _nearestEnemyDetector;
     private Health _health;
 
     public float Range => _range;
@@ -19,6 +20,7 @@ public class Vampirism : BaseAbility
         base.Awake();
         _attacker = GetComponentInParent<IAttacker>();
         _health = GetComponentInParent<Health>();
+        _nearestEnemyDetector = GetComponent<NearestEnemyDetector>();
     }
 
     public override void Active()
@@ -31,36 +33,21 @@ public class Vampirism : BaseAbility
         }
     }
 
-    private List<IDamageable> GetTargets()
-    {
-        List<IDamageable> damageables = new List<IDamageable>();
-
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(Transform.position, _range, _enemyLayerMask))
-        {
-            if(collider.TryGetComponent<IDamageable>(out IDamageable damageable))
-            {
-                damageables.Add(damageable);
-            }
-        }
-
-        return damageables;
-    }
-
     private IEnumerator VampirismRoutine()
-    {               
+    {
         while (CurrentEnergy != MinEnergy)
         {
             yield return TickTime;
 
             ChangeEnergy(-Tick / _duration);
 
-            List<IDamageable> targets = GetTargets();
+            IDamageable target = _nearestEnemyDetector.GetClosestTargetInRange(Range, _enemyLayerMask);
 
-            foreach(IDamageable damageable in targets)
+            if (target != null)
             {
-                _attacker.Attack(damageable, _damage);
+                _attacker.Attack(target, _damage);
                 _health.Heal(_damage);
-            }            
+            }
         }
 
         IsActive = false;

@@ -1,25 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Vampirism))]
-public class VampirismEnergyView : MonoBehaviour
+[RequireComponent(typeof(BaseAbility))]
+public class AbilityEnergyView : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
-    private Vampirism _vampirism;
+    private BaseAbility _baseAbility;
 
     private void Awake()
     {
-        _vampirism = GetComponent<Vampirism>();
+        _baseAbility = GetComponent<BaseAbility>();
     }
 
     private void OnEnable()
     {
-        _vampirism.EnergyUpdated += OnEnergyUpdated;
+        _baseAbility.EnergyUpdated += OnEnergyUpdated;
     }
 
     private void OnDisable()
     {
-        _vampirism.EnergyUpdated -= OnEnergyUpdated;
+        _baseAbility.EnergyUpdated -= OnEnergyUpdated;
     }
 
     private void OnEnergyUpdated(float value)
