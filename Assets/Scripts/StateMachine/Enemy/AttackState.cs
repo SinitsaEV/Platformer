@@ -20,7 +20,7 @@ public class AttackState : EnemyState
 
         if(_attackDetector.CanAttack == false)
             _changer.ChangeState<ChaseState>();
-
+                
         _attacker.Attack(_playerDetector.Damageable, _damage);
     }
 }

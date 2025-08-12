@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     private IStateMachine _machine;
     private Rigidbody2D _rigidbody;
     private EnemyDependencies _dependencies;
-    private int _damage;
+    private int _damage = 20;
 
     private void Awake()
     {
